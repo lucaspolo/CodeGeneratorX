@@ -11,6 +11,7 @@ use strict;
 # B <access_operator> NameOfClass
 # A <access_operator> nameOfAttribute1 type
 # A <access_operator> nameOfAttribute2 type
+# # It's a comment
 # A <access_operator> nameOfAttributeN type
 # E 
 #

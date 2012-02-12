@@ -1,8 +1,9 @@
 B + Pessoa 
-A - nome String
-A - teste1 int
-A # teste char[10]
-A # teste teste[56]
-A + desprotegido float
-A - teste float[34543]
+A - nome:String
+A - teste1:int
+A # teste:char[10]
+A # teste:teste[56]
+A + desprotegido:float
+A - teste:float[34543]
+M + metodo(atributo):void
 E

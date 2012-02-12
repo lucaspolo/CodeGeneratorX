@@ -9,10 +9,10 @@ use strict;
 # Model of flat file:
 #
 # B <access_operator> NameOfClass
-# A <access_operator> nameOfAttribute1 type
-# A <access_operator> nameOfAttribute2 type
+# A <access_operator> nameOfAttribute1:type
+# A <access_operator> nameOfAttribute2:type
 # # It's a comment
-# A <access_operator> nameOfAttributeN type
+# A <access_operator> nameOfAttributeN:type
 # E 
 #
 # Where <access_operator>:
@@ -39,16 +39,23 @@ while (<>) {
 		elsif($1 eq "#") { CG::startProtectedClass($2); }
 		
 	}
-	elsif(/^A\s+([\+\-\#])\s+(\w+)\s+(\w+)\[(\w+)\]/) { 
+	elsif(/^A\s+([\+\-\#])\s+(\w+)\s*:\s*(\w+)\[(\w+)\]/) { 
 		if($1 eq "+") { CG::publicAtributeArray($2, $3, $4); }
 		elsif($1 eq "-") { CG::privateAtributeArray($2, $3, $4); }
 		elsif($1 eq "#") { CG::protectedAtributeArray($2, $3, $4); }
 	}
-	elsif(/^A\s+([\+\-\#])\s+(\w+)\s+(\w+)/) {
+	elsif(/^A\s+([\+\-\#])\s+(\w+)\s*:\s*(\w+)/) {
 		if($1 eq "+") { CG::publicAtribute($2, $3); }
 		elsif($1 eq "-") { CG::privateAtribute($2, $3); }
 		elsif($1 eq "#") { CG::protectedAtribute($2, $3); }
 	}
+
+    #elsif(/^M\s+([\+\-\#])\s+(\w+)\s*\((.*)\)\s*:\s*(.*)/) {
+    #    print "Access: $1\n";
+    #    print "Name: $2\n";
+    #    print "Attributes: $3\n";
+    #    print "Return type: $4\n";
+    #}
 
 	elsif(/^E/) { CG::endClass(); }
 	

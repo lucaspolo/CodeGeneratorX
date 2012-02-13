@@ -49,14 +49,6 @@ while (<>) {
 		elsif($1 eq "-") { CG::privateAtribute($2, $3); }
 		elsif($1 eq "#") { CG::protectedAtribute($2, $3); }
 	}
-
-    #elsif(/^M\s+([\+\-\#])\s+(\w+)\s*\((.*)\)\s*:\s*(.*)/) {
-    #    print "Access: $1\n";
-    #    print "Name: $2\n";
-    #    print "Attributes: $3\n";
-    #    print "Return type: $4\n";
-    #}
-
 	elsif(/^E/) { CG::endClass(); }
 	
 	else {
